@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +16,16 @@ class BlogFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+     protected $model = Blog::class;
     public function definition(): array
     {
         return [
-            'title'=>fake()->name(),
+            'title' => fake()->text(),
+            'intro' => fake()->text(),
+            'slug' => fake()->unique()->slug(5),
+            'body'=>fake()->paragraph(3, true),
+            'category_id'=>Category::factory(),
         ];
     }
 }
