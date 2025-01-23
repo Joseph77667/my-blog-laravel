@@ -1,4 +1,5 @@
-@extends('components.layout')
-@section('content')
-    <h2>hi</h2>
-@endsection
+<x-layout>
+    <x-hero />
+    <x-blogs-section :blogs="$blogs"/>
+    <x-subscribe />
+</x-layout>

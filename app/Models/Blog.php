@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Blog extends Model
 {
-    protected $fillable = ['title', 'intro', 'slug', 'body', 'category_id'];
+    use HasFactory, Notifiable;
 
-    public function user()
+    protected $with = ['category', 'author'];
+    protected $fillable = ['title', 'intro', 'body'];
+
+    public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function category()

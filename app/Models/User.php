@@ -23,11 +23,6 @@ class User extends Authenticatable
         return $this->hasMany(Blog::class);
     }
 
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
-
     protected $hidden = [
         'password',
         'remember_token',

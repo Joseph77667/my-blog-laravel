@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,11 +22,12 @@ class BlogFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->text(),
-            'intro' => fake()->text(),
-            'slug' => fake()->unique()->slug(5),
-            'body'=>fake()->paragraph(3, true),
+            'title' => fake()->sentence(),
+            'intro' => fake()->sentence(),
+            'slug' => fake()->slug(),
+            'body'=>fake()->text(),
             'category_id'=>Category::factory(),
+            'user_id'=>User::factory()
         ];
     }
 }

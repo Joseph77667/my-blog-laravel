@@ -20,11 +20,6 @@ class BlogController extends Controller
         return view('blogs', ['blog' => $blog]);
     }
 
-    public function create()
-    {
-        return view('create-blog');
-    }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -38,5 +33,17 @@ class BlogController extends Controller
         $blog->save();
 
         return redirect()->route('blogs.index')->with('success', 'Blog created successfully.');
+    }
+
+    public function update(Request $request){
+
+    }
+
+    public function delete($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+
+        return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }
