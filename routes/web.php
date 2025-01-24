@@ -10,25 +10,16 @@ use PHPUnit\Framework\Attributes\Group;
 
 // Route::get('/', [BlogController::class, 'index']);
 
-// Route::controller(BlogController::class)->group(function(){
-//     Route::get('/blogs', 'show');
+//  Route::controller(BlogController::class)->group(function(){
+// //     Route::get('/blogs', 'show');
 //     Route::post('/blogs/store', 'store');
-//     Route::patch('blogs/update', 'update');
-//     Route::delete('blogs/delete', 'delete');
+// //     Route::patch('blogs/update', 'update');
+// //     Route::delete('blogs/delete', 'delete');
 // });
 
-Route::get('/', function () {
-    return view('blogs',[
-        'blogs' => Blog::latest()->get()//with('category','author')->get()
-    ]);
-});
+Route::get('/',[BlogController::class, 'index'] );
 
-Route::get('/blogs/{blog:slug}', function (Blog $blog) {
-    return view('blog',[
-        'blog'=>$blog,
-        'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
-    ]);
-});
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);
 
 Route::get('/categories/{categories:slug}', function (Category $categories) {
     return view('blogs', [
@@ -40,4 +31,9 @@ Route::get('/users/{user:username}', function(User $user){
     return view('blogs',[
         'blogs' => $user->blogs
     ]);
+});
+
+
+Route::get('/add', function(){
+    return view('create');
 });

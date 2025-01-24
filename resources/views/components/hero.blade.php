@@ -22,7 +22,7 @@
             <a
                 type="button"
                 class="btn btn-outline-secondary btn-lg px-4"
-                href="#blogs"
+                href="/"
             >
                 Read Blogs
             </a>
