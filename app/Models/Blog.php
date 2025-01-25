@@ -23,6 +23,17 @@ class Blog extends Model
             });
             
         });
+        $query->when($filer['category']??false, function ($query, $slug) {
+            //logical grouping
+            $query->whereHas('category', function ($query) use ($slug){
+                $query->where('slug', $slug);
+            });
+        });
+        $query->when($filer['username']??false, function ($query, $username) {
+            $query->whereHas('author', function ($query) use ($username){
+                $query->where('username', $username);
+            });
+        });
     }
 
     public function author()

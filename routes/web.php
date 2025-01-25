@@ -21,17 +21,17 @@ Route::get('/',[BlogController::class, 'index'] );
 
 Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);
 
-Route::get('/categories/{categories:slug}', function (Category $categories) {
-    return view('blogs', [
-        'blogs' => $categories->blogs//->load('category', 'author')
-    ]);
-});
+// Route::get('/categories/{categories:slug}', function (Category $categories) {
+//     return view('blogs', [
+//         'blogs' => $categories->blogs//->load('category', 'author')
+//     ]);
+// });
 
-Route::get('/users/{user:username}', function(User $user){
-    return view('blogs',[
-        'blogs' => $user->blogs
-    ]);
-});
+// Route::get('/users/{user:username}', function(User $user){
+//     return view('blogs',[
+//         'blogs' => $user->blogs
+//     ]);
+// });
 
 
 Route::get('/add', function(){
