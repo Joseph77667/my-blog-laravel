@@ -1,4 +1,4 @@
-<section class="px-4 py-5 my-3 text-center">
+<section class="px-4 py-2 my-3 text-center">
     <img
         class="d-block mx-auto mb-2"
         src="/images/logo.jpg"

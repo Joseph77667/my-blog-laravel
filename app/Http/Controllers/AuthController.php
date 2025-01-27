@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class AuthController extends Controller
 {
     public function create(){
-        return view('register.create');
+        return view('auth.create');
     }
     public function store(){
         $formData = request()->validate([
@@ -39,9 +39,11 @@ class AuthController extends Controller
         'email.required' => 'Need email',
         'password.required' => 'Need password'
     ]);
+    //if user credentials correct -> redirect home
     if (auth()->attempt($formData)){
         return redirect('/')->with('success','Login successfully');
     }
+    //if user credentials fail -> redirect back to form with error
     else{
         return redirect()->back()->withErrors([
             'email' => 'User credential needs.'
@@ -52,6 +54,5 @@ class AuthController extends Controller
     public function logout(){
         auth()->logout();
         return redirect('/')->with('success', 'Good bye');
-
     }
 }

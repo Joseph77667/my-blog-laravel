@@ -3,8 +3,8 @@
         <a href="/" class="navbar-brand">MPSS</a>
         <div class="d-flex">
             <a href="/" class="nav-link text-white">Blogs</a>
-            {{-- <a href="" class="nav-link text-white">Login</a> --}}
-            <a href="/add" class="nav-link text-white">Create Blog</a>
+            
+            <a href="/admin/blogs/create" class="nav-link text-white">Create Blog</a>
 
             @guest
             <a href="/register" class="nav-link text-white">Register</a>

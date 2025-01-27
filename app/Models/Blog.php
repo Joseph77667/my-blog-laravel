@@ -11,8 +11,17 @@ class Blog extends Model
     use HasFactory, Notifiable;
 
     protected $with = ['category', 'author'];
-    protected $fillable = ['title', 'intro', 'body'];
 
+    protected $fillable = [
+        'title',
+        'intro',
+        'slug',
+        'body',
+        'category_id',
+        'thumbnail',
+        'user_id', // Add user_id to the fillable array
+    ];
+    
     public function scopeFilter($query, $filer)
     {
         $query->when($filer['search']??false, function ($query, $search) {

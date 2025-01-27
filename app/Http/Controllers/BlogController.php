@@ -11,44 +11,51 @@ class BlogController extends Controller
 {
     public function index()
     {
-            return view('blogs.index',[
-                'blogs' =>Blog::latest()
-                ->filter(request(['search','category','username']))
+        return view('blogs.index', [
+            'blogs' => Blog::latest()
+                ->filter(request(['search', 'category', 'username']))
                 ->paginate(6)
                 ->withQueryString(),
-                // 'categories'=>Category::all()//with('category','author')->get()
-            ]);
+            // 'categories'=>Category::all()//with('category','author')->get()
+        ]);
     }
 
-    public function show(Blog $blog) {
-        return view('blogs.show',[
-            'blog'=>$blog,
+    public function show(Blog $blog)
+    {
+        return view('blogs.show', [
+            'blog' => $blog,
             'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
         ]);
     }
 
-    public function store(Request $request)
+    public function create()
     {
-        $validatedData = $request->validate([
-            'title' => ['required','max:225'],
+        return view('blogs.create', [
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function store()
+    {
+        $path = request()->file('thumbnail') ? request()->file('thumbnail')->store('thumbnails') : null;
+
+        $formData = request()->validate([
+            'title' => ['required', 'max:225'],
             'intro' => 'required',
-            'slug' => ['required',Rule::unique('blogs','slug')],
+            'slug' => ['required', Rule::unique('blogs', 'slug')],
             'body' => 'required',
+            "category_id" => ["required", Rule::exists('categories', 'id')],
         ]);
 
-        $blog = new Blog();
-        $blog->title = $validatedData['title'];
-        $blog->intro = $validatedData['intro'];
-        $blog->slug = $validatedData['slug'];
-        $blog->body = $validatedData['body'];
-        $blog->save();
+        $formData['user_id'] = \Illuminate\Support\Facades\Auth::user()->id; // Add user_id to the validated data
+        $formData['thumbnail'] = $path;
 
-        return redirect()->route('blogs')->with('success', 'Blog created successfully.');
+        Blog::create($formData); // Create the blog post with validated data
+
+        return redirect('/');
     }
 
-    public function update(Request $request){
-
-    }
+    public function update(Request $request) {}
 
     public function delete($id)
     {
@@ -72,4 +79,3 @@ class BlogController extends Controller
     //     return Blog::latest()->filter()->get();
     // }
 }
-
