@@ -15,12 +15,22 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
     ];
 
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function getNameAttribute($value){
+        return ucfirst($value);
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 
     protected $hidden = [
