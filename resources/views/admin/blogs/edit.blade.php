@@ -1,12 +1,13 @@
-<x-layout>
-    <h3 class="my-3 text-center">Blog create form</h3>
+<x-admin-layout>
+    <h3 class="my-3 text-center">Blog Edit form</h3>
     <div class="col-md-8 mx-auto">
         <x-card-wrapper>
             <form
             enctype="multipart/form-data"
-                action="/admin/blogs/store"
+                action="/admin/blogs/{{$blog->slug}}/update"
                 method="POST"
             >
+                @method('patch')
                 @csrf
                 <div class="mb-3">
                     <label
@@ -18,7 +19,7 @@
                         type="text"
                         class="form-control"
                         name="title"
-                        value="{{old('title')}}"
+                        value="{{$blog->title}}"
                     >
                     <x-error name="title" />
                 </div>
@@ -33,7 +34,7 @@
                         type="text"
                         class="form-control"
                         name="slug"
-                        value="{{old('slug')}}"
+                        value="{{$blog->slug}}"
                     >
                     <x-error name="slug" />
                 </div>
@@ -47,7 +48,7 @@
                         type="text"
                         class="form-control"
                         name="intro"
-                        value="{{old('intro')}}"
+                        value="{{$blog->intro}}"
                     >
                     <x-error name="intro" />
                 </div>
@@ -62,7 +63,7 @@
                         cols="30"
                         rows="5"
                         class="form-control"
-                    >{{old('body')}}</textarea>
+                    >{{$blog->body}}</textarea>
                     <x-error name="body" />
                 </div>
                 <div class="mb-3">
@@ -78,6 +79,10 @@
                     >
                     <x-error name="body" />
                 </div>
+                <img src="/storage/{{$blog->thumbnail}}" 
+                width="200px"
+                height="100px"
+                alt="">
 
                 <div>
                     <label
@@ -90,12 +95,12 @@
                         class="form-control"
                     >
                         @foreach ($categories as $category)
-                        <option {{$category->id==old('category_id') ? 'selected':''}}
+                        <option {{$category->id==old($blog->category->id) ? 'selected':''}}
                             value="{{$category->id}}">{{$category->name}}
                         </option>
                         @endforeach
-                    </select><x-error name="category_id" />
-
+                    </select>
+                    <x-error name="category_id" />
                 </div>
                 <div class="d-flex justify-content-start mt-3">
                     <button
@@ -106,4 +111,4 @@
             </form>
         </x-card-wrapper>
     </div>
-</x-layout>
+</x-admin-layout>

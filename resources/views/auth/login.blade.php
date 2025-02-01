@@ -19,10 +19,11 @@
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 value="{{old('email')}}"
-                                @error('email')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
                             >
+                            @error('email')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
+                            
                         </div>
                         <div class="mb-3">
                             <label
@@ -30,15 +31,15 @@
                                 class="form-label"
                             >Password</label>
                             <input
-                            required
-                            name="password"
+                                required
+                                name="password"
                                 type="password"
                                 class="form-control"
                                 id="exampleInputPassword1"
-                                @error('password')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
                             >
+                            @error('password')
+                            <p class="text-danger">{{$message}}</p>
+                            @enderror
                         </div>
                         <button
                             type="submit"

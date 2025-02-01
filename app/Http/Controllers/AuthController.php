@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
@@ -23,7 +24,7 @@ class AuthController extends Controller
         $user = User::create($formData);
         auth()->login($user);
 
-        return redirect('/')->with('success', 'Welcome Dear, '.$user->name);
+        return redirect('/login');
     }
 
     public function login(){
@@ -38,10 +39,16 @@ class AuthController extends Controller
     [
         'email.required' => 'Need email',
         'password.required' => 'Need password'
-    ]);
+         ]);
     //if user credentials correct -> redirect home
     if (auth()->attempt($formData)){
-        return redirect('/')->with('success','Login successfully');
+        if(auth()->user()->is_admin){
+            return redirect('/admin/blogs');
+        }
+        else{
+            return redirect('/')->with('success','Login successfully');
+        }
+        
     }
     //if user credentials fail -> redirect back to form with error
     else{
