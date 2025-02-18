@@ -1,6 +1,6 @@
 
 <section
-    class="container my-4 text-center"
+    class="container my-5 text-center"
     id="subscribe"
 >
     <div class="row">

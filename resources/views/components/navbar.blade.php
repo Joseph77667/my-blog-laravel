@@ -1,6 +1,6 @@
 <nav class="navbar p-fixed navbar-dark bg-dark"> 
     <div class="container">
-        <a href="/" class="navbar-brand">MPSS</a>
+        <a href="/" class="navbar-brand">MyLogo</a>
         <div class="d-flex">
             <a href="/" class="nav-link text-white">Blogs</a>
 
