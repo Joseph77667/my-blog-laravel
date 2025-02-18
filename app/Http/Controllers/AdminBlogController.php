@@ -29,7 +29,8 @@ class AdminBlogController extends Controller
 
     public function store()
     {
-        $path = request()->file('thumbnail') ? request()->file('thumbnail')->store('thumbnails') : null;
+        $path = request()->file('thumbnail') ?
+         request()->file('thumbnail')->store('thumbnails') : null;
 
         $formData = request()->validate([
             'title' => ['required', 'max:225'],
@@ -44,7 +45,7 @@ class AdminBlogController extends Controller
 
         Blog::create($formData); // Create the blog post with validated data
 
-        return redirect('/admin/blogs');
+        return redirect('/admin/blogs')->with('success', 'Welcome '.auth()->user()->name);
     }
 
     public function edit(Blog $blog){

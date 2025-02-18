@@ -20,9 +20,7 @@
                                 aria-describedby="emailHelp"
                                 value="{{old('name')}}"
                             >
-                            @error('name')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
+                            <x-error name="name"/>
                         </div>
                         <div class="mb-3">
                             <label
@@ -38,9 +36,7 @@
                                 aria-describedby="emailHelp"
                                 value="{{old('username')}}"
                             >
-                            @error('username')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
+                            <x-error name="username"/>
                         </div>
                         <div class="mb-3">
                             <label
@@ -55,10 +51,7 @@
                                 id="exampleInputEmail1"
                                 aria-describedby="emailHelp"
                                 value="{{old('email')}}"
-                                @error('email')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
-                            >
+                                <x-error name="email"/>
                         </div>
                         <div class="mb-3">
                             <label
@@ -71,10 +64,8 @@
                                 type="password"
                                 class="form-control"
                                 id="exampleInputPassword1"
-                                @error('password')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
-                            >
+                                
+                                <x-error name="password"/>
                         </div>
                         <button
                             type="submit"

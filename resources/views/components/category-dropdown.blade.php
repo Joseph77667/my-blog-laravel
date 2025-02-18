@@ -15,11 +15,14 @@
         <li><a
                 class="dropdown-item"
                 href="/"
-            >all</a></li>
+            >all</a>
+        </li>
         @foreach ($categories as $category)
         <li><a
                 class="dropdown-item"
-                href="/?category={{$category->slug}}{{request('search')?'&search='.request('search') : ''}}{{request('username')?'&username='.request('username') : ''}}"
+                href="/?category={{$category->slug}}
+                {{request('search')?'&search='.request('search') : ''}}
+                {{request('username')?'&username='.request('username') : ''}}"
             >{{$category->name}}</a></li>
         @endforeach
     </ul>

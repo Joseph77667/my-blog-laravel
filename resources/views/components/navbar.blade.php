@@ -18,16 +18,24 @@
             <a href="/admin/blogs"
              class="nav-link text-white">Dashboard</a>
             @endcan
-            <a href="" class="nav-link text-white">Welcome {{auth()->user()->name}}</a>
+            <img 
+            src="{{auth()->user()->avatar}}" 
+            width="50"
+            height="50"
+            class="rounded-circle"
+            alt="">
+
+            <a href="" class="nav-link ">Welcome {{auth()->user()->name}}</a>
             <form action="/logout" method="POST">
                 @csrf
                 <button href="" 
+                type="submit"
                 class="nav-link text-white btn btn-link">
                 Logout</button>
             </form>
             @endauth
 
-            <a href="" class="nav-link text-white">Subcribe</a>
+            <a href="" class="nav-link text-white">Subscribe</a>
         </div>
     </div>
 </nav>
