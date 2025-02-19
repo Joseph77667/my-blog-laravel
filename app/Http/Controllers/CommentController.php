@@ -19,6 +19,6 @@ class CommentController
             'user_id' => auth()->id()
             
         ]);
-        return back();
+        return redirect('/blogs/'.$blog->slug);
     }
 }

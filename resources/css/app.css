@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.card-img {
+    height: 200px; /* Set your desired height */
+    object-fit: cover; /* Crop to fit */
+    width: 100%; /* Ensure the width adapts */
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\Rule;
@@ -28,7 +29,6 @@ class BlogController extends Controller
             'randomBlogs' => Blog::inRandomOrder()->take(3)->get()
         ]);
     }
-    public function update(Request $request) {}
 
     public function delete($id)
     {
@@ -37,6 +37,27 @@ class BlogController extends Controller
 
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully.');
     }
+
+    public function subscriptionHandler(Blog $blog){
+
+        if (User::find(auth()->id())->isSubscribed($blog)){
+            $blog->unSubscribed();
+        }else{
+            $blog->subscribed();
+        }
+
+        return back();
+
+
+        //auth()->user()->isSubscribed($blog)
+    }
+
+
+
+
+
+
+
 
     // protected function getBlogs(){
     //     // $query=Blog::latest();

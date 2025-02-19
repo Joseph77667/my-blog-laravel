@@ -2,7 +2,7 @@
 <div class="card">
     <img
         src="{{ asset('storage/' . $blog->thumbnail) }}"
-        class="card-img-top"
+        class="card-img-top card-img"
         alt="..."
     />
     <div class="card-body">
