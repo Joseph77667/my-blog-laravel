@@ -4,10 +4,15 @@
         <div class="col-md-2 mt-3">
             <ul class="list-group mt-5">
                 <li class="list-group-item">
-                    <a href="/admin/blogs">Dashboard</a>
+                    <a href="/admin/blogs" 
+                    class="{{request()->is('admin/blogs') ? 'text-blue-600' : 'text-black'}}">Dashboard</a>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item 
+                {{request()->is('admin/blogs/create') ? 'text-blue-600' : 'text-black'}}">
                     <a href="/admin/blogs/create">Create Blog</a>
+                </li>
+                <li class="list-group-item {{request()->is('admin/users') ? 'text-blue-600' : 'text-black'}}">
+                    <a href="/admin/users">Users</a>
                 </li>
             </ul>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
@@ -17,20 +18,7 @@ use PHPUnit\Framework\Attributes\Group;
 // });
 
 Route::get('/', action: [BlogController::class, 'index']);
-
 Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);
-
-// Route::get('/categories/{categories:slug}', function (Category $categories) {
-//     return view('blogs', [
-//         'blogs' => $categories->blogs//->load('category', 'author')
-//     ]);
-// });
-
-// Route::get('/users/{user:username}', function(User $user){
-//     return view('blogs',[
-//         'blogs' => $user->blogs
-//     ]);
-// });
 
 Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
@@ -50,5 +38,12 @@ Route::middleware('can:admin')->group(function () {
     Route::patch('/admin/blogs/{blog:slug}/update', [AdminBlogController::class, 'update']);
     Route::delete('/admin/blogs/{blog:slug}/delete', [AdminBlogController::class, 'destroy']);
     Route::get('/admin/blogs', [AdminBlogController::class, 'index']);
+
+    Route::get('/admin/users', [AdminUserController::class, 'index']);
+    Route::get('/admin/users/create', [AdminUserController::class, 'create']);
+    Route::post('/admin/users/store', [AdminUserController::class, 'store']);
+    Route::get('/admin/users/{user:name}/edit', [AdminUserController::class, 'edit']);
+    Route::patch('/admin/users/{user:name}/update', [AdminUserController::class, 'update']);
+    Route::delete('/admin/users/{user:name}/delete', [AdminUserController::class, 'destroy']);
 });
 

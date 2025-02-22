@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 mx-auto">
-                <h3 class="text-primary text-center my-2">Login form</h3>
+                <h3 class="text-primary text-center my-2 text-2xl">Login form</h3>
                 <div class="card p-4 my-3 shadow-sm">
                     <form method="POST">
                         @csrf
@@ -43,7 +43,7 @@
                         </div>
                         <button
                             type="submit"
-                            class="btn btn-primary"
+                            class="btn btn-primary mt-3 px-5"
                         >Submit</button>
                     </form>
                 </div>

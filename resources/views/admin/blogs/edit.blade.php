@@ -1,13 +1,12 @@
 <x-admin-layout>
-    <h3 class="my-3 text-center">Blog Edit form</h3>
+    <h3 class="my-3 text-center">Blog Update form</h3>
     <div class="col-md-8 mx-auto">
         <x-card-wrapper>
             <form
             enctype="multipart/form-data"
-                action="/admin/blogs/{{$blog->slug}}/update"
+                action="/admin/blogs/store"
                 method="POST"
             >
-                @method('patch')
                 @csrf
                 <div class="mb-3">
                     <label
@@ -19,7 +18,7 @@
                         type="text"
                         class="form-control"
                         name="title"
-                        value="{{$blog->title}}"
+                        value="{{old('title')}}"
                     >
                     <x-error name="title" />
                 </div>
@@ -34,7 +33,7 @@
                         type="text"
                         class="form-control"
                         name="slug"
-                        value="{{$blog->slug}}"
+                        value="{{old('slug')}}"
                     >
                     <x-error name="slug" />
                 </div>
@@ -48,7 +47,7 @@
                         type="text"
                         class="form-control"
                         name="intro"
-                        value="{{$blog->intro}}"
+                        value="{{old('intro')}}"
                     >
                     <x-error name="intro" />
                 </div>
@@ -63,7 +62,7 @@
                         cols="30"
                         rows="5"
                         class="form-control"
-                    >{{$blog->body}}</textarea>
+                    >{{old('body')}}</textarea>
                     <x-error name="body" />
                 </div>
                 <div class="mb-3">
@@ -79,10 +78,6 @@
                     >
                     <x-error name="body" />
                 </div>
-                <img src="/storage/{{$blog->thumbnail}}" 
-                width="200px"
-                height="100px"
-                alt="">
 
                 <div>
                     <label
@@ -95,7 +90,7 @@
                         class="form-control"
                     >
                         @foreach ($categories as $category)
-                        <option {{$category->id==old($blog->category->id) ? 'selected':''}}
+                        <option {{$category->id==old('category_id') ? 'selected':''}}
                             value="{{$category->id}}">{{$category->name}}
                         </option>
                         @endforeach

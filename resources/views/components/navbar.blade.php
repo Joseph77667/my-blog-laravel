@@ -1,31 +1,34 @@
-<nav class="navbar p-fixed navbar-dark bg-dark"> 
-    <div class="container">
-        <a href="/" class="navbar-brand">MyLogo</a>
-        <div class="d-flex">
-            <a href="/" class="nav-link text-white">Blogs</a>
-
-            {{-- @if (auth()->user->is_admin)
-            <a href="/admin/blogs" class="nav-link text-white">Create Blog</a>
-            @endif --}}
-
+<nav class="navbar p-fixed bg-slate-700"> 
+    <div class="container flex items-center align-middle">
+        <a href="/" class="navbar-brand text-white">MyLogo</a>
+        <div class="d-flex gap-x-5">
+            <a href="/" class="nav-link {{request()->is('/') ? 'text-blue-500' : 'text-white'}}">Blogs</a>
             @guest
-            <a href="/register" class="nav-link text-white">Register</a>
-            <a href="/login" class="nav-link text-white">Login</a>           
+            <a href="/register" 
+            class="nav-link 
+            {{request()->is('register') ? 'text-blue-500' : 'text-white'}}">Register</a>
+            <a href="/login" class="nav-link 
+            {{request()->is('login') ? 'text-blue-500' : 'text-white'}}">Login</a>           
             @endguest
 
             @auth
             @can('admin')
             <a href="/admin/blogs"
-             class="nav-link text-white">Dashboard</a>
+             class="nav-link 
+             {{request()->is('admin/blogs') ? 'text-blue-500' : 'text-white'}}">Dashboard</a>
             @endcan
-            <img 
-            src="{{auth()->user()->avatar}}" 
-            width="50"
-            height="50"
-            class="rounded-circle"
-            alt="">
-
-            <a href="" class="nav-link ">Welcome {{auth()->user()->name}}</a>
+            <div>
+                <a class="flex justify-between items-center px-3 bg-slate-200">
+                    <img 
+                    src="{{auth()->user()->avatar}}" 
+                    width="44"
+                    height="50"
+                    class="rounded-full"
+                    alt="">
+    
+                    <h3>{{auth()->user()->name}}</h3>
+                </a>
+            </div>
             <form action="/logout" method="POST">
                 @csrf
                 <button href="" 
@@ -34,8 +37,6 @@
                 Logout</button>
             </form>
             @endauth
-
-            <a href="" class="nav-link text-white">Subscribe</a>
         </div>
     </div>
 </nav>

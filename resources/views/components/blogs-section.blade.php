@@ -1,18 +1,11 @@
 @props(['blogs'])
 <section
-    class="container text-center"
+    class="container text-center mt-5"
     id="blogs"
 >
     <h1 class="display-5 fw-bold mb-4">Blogs</h1>
     <div class="">
         <x-category-dropdown />
-        {{-- <select
-            name=""
-            id=""
-            class="p-1 rounded-pill mx-3"
-        >
-            <option value="">Filter by Tag</option>
-        </select> --}}
     </div>
     <form
         action=""
@@ -51,7 +44,7 @@
             </button>
         </div>
     </form>
-    <div class="row">
+    <div class="row mb-5">
         @forelse ($blogs as $blog)
         <div class="col-md-4 mb-4">
             <x-blog-card :blog="$blog" />

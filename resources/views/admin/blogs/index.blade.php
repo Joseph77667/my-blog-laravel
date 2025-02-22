@@ -1,5 +1,5 @@
 <x-admin-layout>
-        <h3 class="text-center">Blogs</h3>
+        <h3 class="text-center text-3xl mt-2">Blogs</h3>
         <x-card-wrapper>
             <table class="table">
                 <thead>
