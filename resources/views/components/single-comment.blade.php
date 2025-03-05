@@ -3,7 +3,7 @@
     <div class="d-flex">
         <div>
             <img
-                src="{{ $comment->author->avatar }}"
+                src="{{ asset($comment->author->avatar) }}"
                 width="50"
                 height="50"
                 class="rounded-circle"
