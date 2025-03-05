@@ -18,6 +18,7 @@ use PHPUnit\Framework\Attributes\Group;
 // });
 
 Route::get('/', action: [BlogController::class, 'index']);
+Route::get('/home', action: [BlogController::class, 'home']);
 Route::get('/blogs/{blog:slug}', [BlogController::class, 'show']);
 
 Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
@@ -29,6 +30,9 @@ Route::post('/blogs/{blog:slug}/subscription', [BlogController::class, 'subscrip
 
 Route::get('/login', [AuthController::class, 'login'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'post_login'])->middleware('guest');
+
+Route::get('/user/{user:id}/edit', [AdminUserController::class, 'editAvatar'])->name('user.edit');
+    Route::post('/user/{user:id}/update-avatar', [AdminUserController::class, 'updateAvatar'])->name('user.update_avatar');
 
 //admin routes
 Route::middleware('can:admin')->group(function () {

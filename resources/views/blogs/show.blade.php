@@ -2,12 +2,14 @@
     <!-- single blog section -->
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mx-auto text-center">
+            <div class="col-md-5 mx-auto text-center min-h-[600px]">
                 <x-card-wrapper>
                     <img 
                     src="{{ asset('storage/' . $blog->thumbnail) }}"
-                        class="card-img card-img-top" alt="..." />
-                    <h3 class="mt-1 mb-3">{{$blog->title}}</h3>
+                    class="object-contain w-full h-[400px]" alt="..." 
+                    />
+                    
+                    <h3 class="my-2 font-semibold text-blue-600">{{$blog->title}}</h3>
                     <div>
                         <div>Author - <a href="/?username={{$blog->author->name}}">{{$blog->author->name}}</a></div>
                         <div class="badge bg-primary">{{$blog->category->name}}</div>

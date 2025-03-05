@@ -2,7 +2,7 @@
 <div class="card">
     <img
         src="{{ asset('storage/' . $blog->thumbnail) }}"
-        class="card-img-top card-img"
+        class="card-img-top card-img object-cover h-[400px]"
         alt="..."
     />
     <div class="card-body">
@@ -21,7 +21,7 @@
         </p>
         <a
             href="/blogs/{{$blog->slug}}"
-            class="btn btn-primary"
+            class="btn btn-primary mt-3"
         >Read More</a>
     </div>
 </div>

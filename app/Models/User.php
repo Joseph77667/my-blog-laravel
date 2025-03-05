@@ -17,6 +17,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'avatar',
     ];
 
     public function blogs()

@@ -21,6 +21,16 @@ class BlogController extends Controller
             // 'categories'=>Category::all()//with('category','author')->get()
         ]);
     }
+    public function home()
+    {
+        return view('components.home', [
+            'blogs' => Blog::latest()
+                ->filter(request(['search', 'category', 'username']))
+                ->paginate(6)
+                ->withQueryString(),
+            // 'categories'=>Category::all()//with('category','author')->get()
+        ]);
+    }
 
     public function show(Blog $blog)
     {
