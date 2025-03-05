@@ -42,7 +42,7 @@
             @auth
                 <x-comment-form :blog="$blog" />
             @else
-                <p class="text-center">Please <a href="/login">login</a> to participate in this discussion.</p>
+                <p class="text-center">Please <a href="/login" class="text-blue-500 underline">login</a> to participate in this discussion.</p>
             @endauth
         </div>
     </section>

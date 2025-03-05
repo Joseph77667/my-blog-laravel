@@ -15,12 +15,12 @@
             <img src="https://livtekindia.com/cdn/shop/files/MipadMediumNavyBlue_Main_900x.jpg?v=1684825625" alt="Blog Illustration" class="w-full h-auto rounded-lg shadow-lg">
         </div> --}}
         </header>
-        <section class="my-10 bg-blue-600 p-5">
+        <section class="my-20 bg-blue-600 p-5">
             <h2 class="text-3xl font-bold text-white text-center pb-2">Benefits of Reading</h2>
             <div class="flex flex-col md:flex-row items-center mt-6">
                 <div class="md:w-1/2 p-6">
                     <p class="text-lg text-white ">
-                        Reading enhances knowledge, improves vocabulary, and strengthens critical thinking skills. 
+                        <span class="text-2xl text-blue-700 p-1 rounded-sm bg-pink-200">Reading</span> enhances knowledge, improves vocabulary, and strengthens critical thinking skills. 
                         It provides an escape into different worlds and perspectives, fostering empathy and understanding. 
                         Whether fiction or non-fiction, books can inspire creativity, reduce stress.
                     </p>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </section>
-        <section class="my-10 bg-yellow-300 p-5">
+        <section class="my-20 bg-yellow-300 p-5">
             <h2 class="text-3xl font-bold text-gray-800">Latest Posts</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                 @foreach($blogs as $blog)

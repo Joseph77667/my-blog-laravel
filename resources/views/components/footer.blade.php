@@ -22,7 +22,13 @@
                         <a href="/admin/blogs" class="hover:text-blue-400 transition">Dashboard</a>
                     </li>
                 @endcan
-                <a href="/logout" class="hover:text-blue-400 transition">Logout</a>
+                <li>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit"
+                            class="hover:text-blue-400 transition">Logout</button>
+                    </form>
+                </li>
             @endauth
             
         </ul>
